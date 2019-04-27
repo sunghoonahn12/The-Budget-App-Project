@@ -17,7 +17,31 @@ var budgetController = (function() {
 // UI CONTROLLER
 var UIController = (function() {
     
-    
+    var DOMstrings = {
+        inputType: '.add__type',
+        inputDescription: '.add__description',
+        inputValue: '.add__value',
+        inputBtn: '.add__btn',
+        incomeContainer: '.income__list',
+        expensesContainer: '.expenses__list',
+        budgetLabel: '.budget__value',
+        incomeLabel: '.budget__income--value',
+        expensesLabel: '.budget__expenses--value',
+        percentageLabel: '.budget__expenses--percentage',
+        container: '.container',
+        expensesPercLabel: '.item__percentage',
+        dateLabel: '.budget__title--month'
+    };
+
+    return {
+        getInput: function() {
+            return {
+                type: document.querySelector(DOMstrings.inputType).value, // Will be either inc or exp
+                description: document.querySelector(DOMstrings.inputDescription).value,
+                value: parseFloat(document.querySelector(DOMstrings.inputValue).value)
+            };
+        }
+    }
     
 })();
 
@@ -42,7 +66,7 @@ var controller = (function(budgetCtrl, UICtrl) {
         
         document.querySelector(DOM.inputType).addEventListener('change', UICtrl.changedType);        
     };
-    
+
     
 })(budgetController, UIController);
 
